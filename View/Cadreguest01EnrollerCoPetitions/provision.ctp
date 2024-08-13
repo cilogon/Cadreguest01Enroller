@@ -1,18 +1,18 @@
 <?php
 
   $params = array();
-  $params['title'] = _txt('pl.access02_enroller.provision.title', array($vv_access_id));
+  $params['title'] = _txt('pl.cadreguest01_enroller.provision.title', array($vv_email));
 
   print $this->element("pageTitleAndButtons", $params);
 ?>
 
 <p>
-Please set a password for your new ACCESS ID <?php print $vv_access_id; ?>
+<?php print _txt('pl.cadreguest01_enroller.provision.header', array($vv_email)) ?>
 </p>
 
 <?php
   print $this->Form->create(
-    'KrbAuthenticator.Krb',
+    'CadreAuthenticator.Cadre',
     array(
       'inputDefaults' => array(
         'label' => false,
@@ -23,28 +23,28 @@ Please set a password for your new ACCESS ID <?php print $vv_access_id; ?>
 
  print $this->Form->hidden('co_petition_id', array('default' => $co_petition_id));
  print $this->Form->hidden('co_enrollment_flow_wedge_id', array('default' => $vv_efwid));
- print $this->Form->hidden('krb_authenticator_id', array('default' => $vv_authenticator['KrbAuthenticator']['id'])) . "\n";
+ print $this->Form->hidden('cadre_authenticator_id', array('default' => $vv_authenticator['CadreAuthenticator']['id'])) . "\n";
  print $this->Form->hidden('co_person_id', array('default' => $vv_co_person_id)) . "\n";
 ?>
 
 <div class="co-info-topbox">
   <i class="material-icons">info</i>
   <?php
-    $maxlen = isset($vv_authenticator['KrbAuthenticator']['max_length'])
-              ? $vv_authenticator['KrbAuthenticator']['max_length']
+    $maxlen = isset($vv_authenticator['CadreAuthenticator']['max_length'])
+              ? $vv_authenticator['CadreAuthenticator']['max_length']
               : 64;
-    $minlen = isset($vv_authenticator['KrbAuthenticator']['min_length'])
-              ? $vv_authenticator['KrbAuthenticator']['min_length']
+    $minlen = isset($vv_authenticator['CadreAuthenticator']['min_length'])
+              ? $vv_authenticator['CadreAuthenticator']['min_length']
               : 8;
   
-    print _txt('pl.krbauthenticator.info', array($minlen, $maxlen));
+    print _txt('pl.cadreauthenticator.info', array($minlen, $maxlen));
   ?>
 </div>
-<ul id="<?php print $this->action; ?>_krbpassword" class="fields form-list form-list-admin">
+<ul id="<?php print $this->action; ?>_cadrepassword" class="fields form-list form-list-admin">
   <li>
     <div class="field-name">
       <div class="field-title">
-        <?php print _txt('pl.krbauthenticator.password.new'); ?>
+        <?php print _txt('pl.cadreauthenticator.password.new'); ?>
         <span class="required">*</span>
       </div>
     </div>
@@ -55,7 +55,7 @@ Please set a password for your new ACCESS ID <?php print $vv_access_id; ?>
   <li>
     <div class="field-name">
       <div class="field-title">
-        <?php print _txt('pl.krbauthenticator.password.again'); ?>
+        <?php print _txt('pl.cadreauthenticator.password.again'); ?>
         <span class="required">*</span>
       </div>
     </div>
@@ -68,7 +68,7 @@ Please set a password for your new ACCESS ID <?php print $vv_access_id; ?>
         <span class="required"><?php print _txt('fd.req'); ?></span>
       </div>
       <div class="field-info">
-        <?php print $this->Form->submit(_txt('pl.access02_enroller.button.label.submit')); ?>
+        <?php print $this->Form->submit(_txt('op.submit')); ?>
       </div>
     </li>
 </ul>

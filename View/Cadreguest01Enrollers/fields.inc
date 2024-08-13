@@ -53,6 +53,7 @@
     <div class="field-name">
       <div class="field-title">
         <?php print _txt('pl.cadreguest01_enroller.idp'); ?>
+      <span class="required">*</span>
       </div>
       <div class="field-desc"><?php print _txt('pl.cadreguest01_enroller.idp.desc'); ?></div>
     </div>
